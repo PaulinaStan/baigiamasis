@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Admin;
 
-use App\Models\Product;
+use App\Http\Controllers\Cart;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\Request;
+use app\Models\Product;
 
 class ProductsController extends Controller
 {

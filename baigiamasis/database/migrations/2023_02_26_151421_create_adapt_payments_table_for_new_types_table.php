@@ -13,7 +13,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('payments', function (Blueprint $table) {
-            $table->string('name');
+            $table->dropColumn('name');
             $table->unsignedBigInteger('order_id')->nullable(false)->after('id');
             $table->unsignedBigInteger('payment_type_id')->nullable(false)->after('order_id');
 
@@ -29,10 +29,12 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('payments', function (Blueprint $table) {
-            $table->dropColumn('name');
+        Schema::table('payments', function (Blueprint $table)
+        {
+            $table->string('name');
             $table->dropColumn('order_id');
             $table->dropColumn('payment_type_id');
+
         });
     }
 };

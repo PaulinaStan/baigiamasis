@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
-class CategoryController
-{
+use App\Models\Category;
 
+class CategoryController extends Controller
+{
+    public function show(Category $category)
+    {
+        return view('category_show', ['category' => $category]);
+    }
 }

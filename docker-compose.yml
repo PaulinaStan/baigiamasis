@@ -1,31 +1,36 @@
-version: '3.3'
+version: '3.9'
 services:
   web:
-    image: tautiz/web4study
+    image: tautiz/web4study:latest
     volumes:
       - ./baigiamasis:/var/www/html/
+#    user: web:web
     ports:
-      - 80:80
+      - "80:80"
     depends_on:
       - db
     environment:
-      APACHE_SERVER_NAME: e-shop.local
+      APACHE_SERVER_NAME: laravel.local
       APPLICATION_ENV: development
+      APACHE_LOG_DIR: /var/log/apache2
+      APACHE_DOCUMENT_ROOT: /var/www/html/public
+      APACHE_RUN_USER: web
+      APACHE_RUN_GROUP: web
 
   db:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
-      - db:/var/lib/mysql
+      - baigiamasis:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: eshop
-      MYSQL_USER: pauuser
-      MYSQL_PASSWORD: paupass
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
 
 volumes:
-  db:
+  baigiamasis:
     external: false

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+//use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Product
- * @package App\Models
+ * @package app\Models
  *
  * @property int $id
  * @property string $name
